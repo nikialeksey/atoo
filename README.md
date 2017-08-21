@@ -1,2 +1,2 @@
 # atoo
-True Object Oriented Android
+True Object Oriented Android Library
