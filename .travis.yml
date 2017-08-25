@@ -2,7 +2,7 @@ language: android
 jdk: oraclejdk8
 env:
   global:
-    - ANDROID_TARGET=android-22
+    - ANDROID_TARGET=android-26
     - ANDROID_ABI=armeabi-v7a
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
@@ -21,7 +21,6 @@ android:
     - 'google-gdk-license-.+'
 script:
   - ./gradlew build jacocoTestReport assembleAndroidTest
-  - android list target
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
