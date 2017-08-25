@@ -2,7 +2,7 @@ language: android
 jdk: oraclejdk8
 env:
   global:
-    - ANDROID_TARGET=android-19
+    - ANDROID_TARGET=android-22
     - ANDROID_ABI=armeabi-v7a
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
