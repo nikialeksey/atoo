@@ -1,0 +1,2 @@
+--exclude freetype2/jni/src/**/*
+--exclude freetype2/jni/include/**/*
