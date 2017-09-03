@@ -1,12 +1,9 @@
 cmake_minimum_required(VERSION 3.6)
 
-add_library( # Specifies the name of the library.
-             freetype2
+add_library(Freetype2Commons SHARED src/main/cpp/commons/freetype2errors.cpp src/main/cpp/commons/errors.cpp)
 
-             # Sets the library as a shared library.
-             SHARED
+add_library(Freetype2 SHARED src/main/cpp/freetype2.cpp)
 
-             # Provides a relative path to your source file(s).
-             src/main/cpp/freetype2.cpp src/main/cpp/freetype2errors.cpp src/main/cpp/errors.cpp)
+add_library(Freetype2Face SHARED src/main/cpp/face.cpp)
 
 include_directories(jni/include/)
