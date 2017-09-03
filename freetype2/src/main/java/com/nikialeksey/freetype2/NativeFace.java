@@ -4,8 +4,8 @@ public class NativeFace implements Face {
 
     private final long address;
 
-    public NativeFace() {
-        address = init();
+    public NativeFace(Freetype2 freetype2, String filename) {
+        address = init(freetype2.address(), filename);
     }
 
     @Override
@@ -16,7 +16,7 @@ public class NativeFace implements Face {
     @Override
     public native void release();
 
-    private native long init();
+    private native long init(long library, String filename);
 
     static {
         System.loadLibrary("Freetype2Face");
