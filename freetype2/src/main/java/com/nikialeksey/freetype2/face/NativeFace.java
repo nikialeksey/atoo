@@ -1,4 +1,6 @@
-package com.nikialeksey.freetype2;
+package com.nikialeksey.freetype2.face;
+
+import com.nikialeksey.freetype2.Freetype2;
 
 public class NativeFace implements Face {
 

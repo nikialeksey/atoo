@@ -1,4 +1,4 @@
-package com.nikialeksey.freetype2;
+package com.nikialeksey.freetype2.face;
 
 import com.nikialeksey.jni.Pointer;
 import com.nikialeksey.jni.Releasable;
