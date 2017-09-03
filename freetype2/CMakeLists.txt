@@ -7,6 +7,6 @@ add_library( # Specifies the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/freetype2.cpp )
+             src/main/cpp/freetype2.cpp src/main/cpp/freetype2errors.cpp src/main/cpp/errors.cpp)
 
 include_directories(jni/include/)
