@@ -12,8 +12,9 @@ const char *getErrorMessage(FT_Error err) {
     return "(Unknown error)";
 }
 
-jint throwException(JNIEnv *env, FT_Error error, const char *className) {
+jint throwException(JNIEnv *env, FT_Error error) {
     jclass exClass;
+    const char *className = "com/nikialeksey/freetype2/exceptions/Freetype2Exception";
     exClass = env->FindClass(className);
     if (exClass == NULL) {
         return throwNoClassDefError(env, className);

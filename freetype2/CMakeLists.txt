@@ -6,4 +6,6 @@ add_library(Freetype2 SHARED src/main/cpp/freetype2.cpp)
 
 add_library(Freetype2Face SHARED src/main/cpp/face.cpp)
 
+add_library(Freetype2Glyph SHARED src/main/cpp/glyph.cpp)
+
 include_directories(jni/include/)
