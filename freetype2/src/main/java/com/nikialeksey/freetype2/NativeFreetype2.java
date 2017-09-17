@@ -2,10 +2,11 @@ package com.nikialeksey.freetype2;
 
 public class NativeFreetype2 implements Freetype2 {
 
-    private final long address;
+    private boolean isInitialized;
+    private long address;
 
     public NativeFreetype2() {
-        address = init();
+        this.isInitialized = false;
     }
 
     @Override
@@ -13,6 +14,10 @@ public class NativeFreetype2 implements Freetype2 {
 
     @Override
     public long address() {
+        if (!isInitialized) {
+            address = init();
+            isInitialized = false;
+        }
         return address;
     }
 

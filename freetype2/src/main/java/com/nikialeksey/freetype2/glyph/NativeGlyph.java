@@ -3,14 +3,26 @@ package com.nikialeksey.freetype2.glyph;
 import com.nikialeksey.freetype2.face.Face;
 
 public class NativeGlyph implements Glyph {
-    private final long faceAddress;
 
-    public NativeGlyph(Face face, char c) {
-        faceAddress = face.address();
-        // @todo #3:30m set charSize and loadChar
-        // @todo #4:30m get char bitmap
-        final Bitmap dBitmap = loadChar(faceAddress, 'D');
-        System.out.println(dBitmap);
+    private final Face face;
+    private final char c;
+    private final long pt;
+    private final long xDpi;
+    private final long yDpi;
+
+    public NativeGlyph(final Face face, final long pt, final long xDpi, final long yDpi,
+                       final char c) {
+        this.face = face;
+        this.pt = pt;
+        this.xDpi = xDpi;
+        this.yDpi = yDpi;
+        this.c = c;
+    }
+
+    @Override
+    public Bitmap charBitmap() {
+        charSize(face.address(), 0, pt*64, xDpi, yDpi);
+        return loadChar(face.address(), c);
     }
 
     private native void charSize(long faceAddress, long width, long height, long hResolution,

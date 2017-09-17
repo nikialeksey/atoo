@@ -2,13 +2,21 @@
 
 extern "C" {
 
+// @todo #5:30m Create jni helpers module with same methods
+unsigned char* as_unsigned_char_array(JNIEnv* &env,jbyteArray array) {
+    int len = env->GetArrayLength (array);
+    unsigned char* buf = new unsigned char[len];
+    env->GetByteArrayRegion (array, 0, len, reinterpret_cast<jbyte*>(buf));
+    return buf;
+}
+
 JNIEXPORT jlong JNICALL
-Java_com_nikialeksey_freetype2_face_NativeFace_init(JNIEnv *env, jclass cls, jlong library, jstring filename) {
+Java_com_nikialeksey_freetype2_face_NativeFace_init(JNIEnv *env, jclass cls, jlong library, jbyteArray faceBytes) {
     FT_Face  face;
 
-    const char *nativeFilename = env->GetStringUTFChars(filename, 0);
-    FT_Error error = FT_New_Face((FT_Library) library, nativeFilename, 0, &face);
-    env->ReleaseStringUTFChars(filename, nativeFilename);
+    const FT_Byte* faceFtBytes = as_unsigned_char_array(env, faceBytes);
+    FT_Long  faceBytesLength = env->GetArrayLength(faceBytes);
+    FT_Error error = FT_New_Memory_Face((FT_Library) library, faceFtBytes, faceBytesLength, 0, &face);
 
     if (error) {
         return throwException(env, error);
