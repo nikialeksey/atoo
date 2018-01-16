@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion 24
+        targetSdkVersion 27
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -22,10 +22,15 @@ android {
             minifyEnabled false
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
