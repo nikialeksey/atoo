@@ -2,12 +2,12 @@ package com.nikialeksey.atoo.shaders;
 
 import android.content.res.AssetManager;
 
-public class FragmentShader implements Shader {
+public class FragmentShader implements GlShader {
 
-    private final Handler origin;
+    private final GlHandler origin;
 
     public FragmentShader(final AssetManager manager, final String assetName) {
-        this.origin = new CachedHandler(new GlShader(new FragmentType(), manager, assetName));
+        this.origin = new CachedHandler(new Shader(new FragmentType(), manager, assetName));
     }
 
     @Override

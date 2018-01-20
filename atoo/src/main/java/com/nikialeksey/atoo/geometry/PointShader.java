@@ -1,8 +1,8 @@
 package com.nikialeksey.atoo.geometry;
 
-import com.nikialeksey.atoo.shaders.ShaderProgram;
+import com.nikialeksey.atoo.shaders.GlShaderProgram;
 
-public interface PointShader extends ShaderProgram {
+public interface PointShader extends GlShaderProgram {
     void draw(final Points points);
     void camera(final float[] m);
 }

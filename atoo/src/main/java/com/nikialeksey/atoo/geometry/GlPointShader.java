@@ -2,27 +2,29 @@ package com.nikialeksey.atoo.geometry;
 
 import android.content.res.AssetManager;
 import android.opengl.GLES20;
-import com.nikialeksey.atoo.glmemory.GlFloatBuffer;
-import com.nikialeksey.atoo.shaders.Attribute;
+import com.nikialeksey.atoo.camera.GlCamera;
+import com.nikialeksey.atoo.vertexbuffer.GlFloatBuffer;
+import com.nikialeksey.atoo.shaders.GlAttribute;
 import com.nikialeksey.atoo.shaders.CachedShaderProgram;
 import com.nikialeksey.atoo.shaders.FragmentShader;
-import com.nikialeksey.atoo.shaders.GlAttribute;
-import com.nikialeksey.atoo.shaders.GlShaderProgram;
-import com.nikialeksey.atoo.shaders.GlUniform;
+import com.nikialeksey.atoo.shaders.Attribute;
 import com.nikialeksey.atoo.shaders.ShaderProgram;
 import com.nikialeksey.atoo.shaders.Uniform;
+import com.nikialeksey.atoo.shaders.GlShaderProgram;
+import com.nikialeksey.atoo.shaders.GlUniform;
 import com.nikialeksey.atoo.shaders.VertexShader;
 
 public class GlPointShader implements PointShader {
 
-    private final ShaderProgram shaderProgram;
-    private final Uniform matrix;
-    private final Attribute position;
+    private final GlShaderProgram shaderProgram;
+    //private final GlCamera camera;
+    private final GlUniform matrix;
+    private final GlAttribute position;
 
     public GlPointShader(final AssetManager assetManager) {
         this(
             new CachedShaderProgram(
-                new GlShaderProgram(
+                new ShaderProgram(
                     new VertexShader(assetManager, "Point.vert"),
                     new FragmentShader(assetManager, "Point.frag")
                 )
@@ -30,18 +32,18 @@ public class GlPointShader implements PointShader {
         );
     }
 
-    private GlPointShader(final ShaderProgram shaderProgram) {
+    private GlPointShader(final GlShaderProgram shaderProgram) {
         this(
             shaderProgram,
-            new GlUniform(shaderProgram, "matrix"),
-            new GlAttribute(shaderProgram, "position")
+            new Uniform(shaderProgram, "matrix"),
+            new Attribute(shaderProgram, "position")
         );
     }
 
     private GlPointShader(
-        final ShaderProgram shaderProgram,
-        final Uniform matrix,
-        final Attribute position
+        final GlShaderProgram shaderProgram,
+        final GlUniform matrix,
+        final GlAttribute position
     ) {
         this.shaderProgram = shaderProgram;
         this.matrix = matrix;

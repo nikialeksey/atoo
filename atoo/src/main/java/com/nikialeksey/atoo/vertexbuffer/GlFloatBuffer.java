@@ -1,4 +1,4 @@
-package com.nikialeksey.atoo.glmemory;
+package com.nikialeksey.atoo.vertexbuffer;
 
 import java.nio.FloatBuffer;
 

@@ -1,15 +1,15 @@
 package com.nikialeksey.atoo.shaders;
 
-public class CachedShaderProgram implements ShaderProgram {
+public class CachedShaderProgram implements GlShaderProgram {
 
-    private final Handler originHandler;
+    private final GlHandler originGlHandler;
 
-    public CachedShaderProgram(final ShaderProgram origin) {
-        this.originHandler = new CachedHandler(origin);
+    public CachedShaderProgram(final GlShaderProgram origin) {
+        this.originGlHandler = new CachedHandler(origin);
     }
 
     @Override
     public int link() {
-        return originHandler.link();
+        return originGlHandler.link();
     }
 }

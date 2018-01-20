@@ -3,12 +3,12 @@ package com.nikialeksey.atoo.shaders;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CachedHandler implements Handler {
+public class CachedHandler implements GlHandler {
 
-    private final Handler origin;
+    private final GlHandler origin;
     private final List<Integer> cache;
 
-    public CachedHandler(final Handler origin) {
+    public CachedHandler(final GlHandler origin) {
         this.origin = origin;
         cache = new ArrayList<>();
     }

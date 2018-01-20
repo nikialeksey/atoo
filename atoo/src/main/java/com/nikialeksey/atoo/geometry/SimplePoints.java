@@ -1,9 +1,9 @@
 package com.nikialeksey.atoo.geometry;
 
-import com.nikialeksey.atoo.glmemory.CachedFloatBuffer;
-import com.nikialeksey.atoo.glmemory.FilledFloatBuffer;
-import com.nikialeksey.atoo.glmemory.FloatBuffer;
-import com.nikialeksey.atoo.glmemory.GlFloatBuffer;
+import com.nikialeksey.atoo.vertexbuffer.CachedFloatBuffer;
+import com.nikialeksey.atoo.vertexbuffer.FilledFloatBuffer;
+import com.nikialeksey.atoo.vertexbuffer.FloatBuffer;
+import com.nikialeksey.atoo.vertexbuffer.GlFloatBuffer;
 import java.util.List;
 import org.cactoos.list.ListOf;
 

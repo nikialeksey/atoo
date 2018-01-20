@@ -1,5 +1,5 @@
 package com.nikialeksey.atoo.shaders;
 
-public interface ShaderType {
+public interface GlShaderType {
     int value();
 }

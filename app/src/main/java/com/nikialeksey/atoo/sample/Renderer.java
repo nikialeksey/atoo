@@ -10,6 +10,12 @@ import com.nikialeksey.atoo.geometry.Point;
 import com.nikialeksey.atoo.geometry.PointShader;
 import com.nikialeksey.atoo.geometry.Shape;
 import com.nikialeksey.atoo.geometry.SimplePoints;
+import com.nikialeksey.atoo.matrix.GlMatrixFactory;
+import com.nikialeksey.atoo.matrix.LookAtOperation;
+import com.nikialeksey.atoo.matrix.MatrixFactory;
+import com.nikialeksey.atoo.matrix.MultiplyOperation;
+import com.nikialeksey.atoo.matrix.OrthoOperation;
+import com.nikialeksey.atoo.screen.Screen;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -22,13 +28,7 @@ public class Renderer implements GLSurfaceView.Renderer {
     }
 
     // Our matrices
-    private final float[] mtrxProjection = new float[16];
-    private final float[] mtrxView = new float[16];
-    private final float[] mtrxProjectionAndView = new float[16];
-
-    // Our screenresolution
-    float   mScreenWidth = 1280;
-    float   mScreenHeight = 768;
+    private float[] mtrxProjectionAndView = new float[16];
 
     PointShader pointShader;
     View view;
@@ -51,29 +51,25 @@ public class Renderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
-        // We need to know the current width and height.
-        mScreenWidth = width;
-        mScreenHeight = height;
+        GLES20.glViewport(0, 0, width, height);
 
-        // Redo the Viewport, making it fullscreen.
-        GLES20.glViewport(0, 0, (int)mScreenWidth, (int)mScreenHeight);
-
-        // Clear our matrices
-        for(int i=0;i<16;i++)
-        {
-            mtrxProjection[i] = 0.0f;
-            mtrxView[i] = 0.0f;
-            mtrxProjectionAndView[i] = 0.0f;
-        }
-
-        // Setup our screen width and height for normal sprite translation.
-        Matrix.orthoM(mtrxProjection, 0, 0f, mScreenWidth, 0.0f, mScreenHeight, 0, 50);
-
-        // Set the camera position (View matrix)
-        Matrix.setLookAtM(mtrxView, 0, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
-
-        // Calculate the projection and view transformation
-        Matrix.multiplyMM(mtrxProjectionAndView, 0, mtrxProjection, 0, mtrxView, 0);
+        final GlMatrixFactory matrixFactory = new MatrixFactory();
+        mtrxProjectionAndView = new MultiplyOperation(
+            matrixFactory,
+            new OrthoOperation(
+                matrixFactory,
+                new Screen(width, height),
+                50
+            ),
+            new LookAtOperation(
+                matrixFactory,
+                new Point(0, 0, 1),
+                new Point(0, 0, 0),
+                new Point(0, 1, 0)
+            )
+        )
+            .result()
+            .asFloatArray();
     }
 
     @Override

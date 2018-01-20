@@ -1,5 +1,5 @@
 package com.nikialeksey.atoo.shaders;
 
-public interface Handler {
+public interface GlHandler {
     int link();
 }
