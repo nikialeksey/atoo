@@ -3,13 +3,13 @@ package com.nikialeksey.atoo.matrix;
 import org.cactoos.Scalar;
 import org.cactoos.scalar.UncheckedScalar;
 
-public class MultiplyOperation implements GlMatrixOperation {
+public class Multiply implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
     private final UncheckedScalar<? extends GlMatrix> left;
     private final UncheckedScalar<? extends GlMatrix> right;
 
-    public MultiplyOperation(
+    public Multiply(
         final GlMatrixFactory factory,
         final GlMatrixOperation left,
         final GlMatrixOperation right
@@ -17,7 +17,7 @@ public class MultiplyOperation implements GlMatrixOperation {
         this(factory, new OperationMatrix(left), new OperationMatrix(right));
     }
 
-    public MultiplyOperation(
+    public Multiply(
         final GlMatrixFactory factory,
         final GlMatrix left,
         final GlMatrix right
@@ -25,7 +25,7 @@ public class MultiplyOperation implements GlMatrixOperation {
         this(factory, () -> left, (Scalar<GlMatrix>) () -> right);
     }
 
-    public MultiplyOperation(
+    public Multiply(
         final GlMatrixFactory factory,
         final Scalar<? extends GlMatrix> left,
         final Scalar<? extends GlMatrix> right
@@ -34,7 +34,7 @@ public class MultiplyOperation implements GlMatrixOperation {
     }
 
 
-    private MultiplyOperation(
+    private Multiply(
         final GlMatrixFactory factory,
         final UncheckedScalar<? extends GlMatrix> left,
         final UncheckedScalar<? extends GlMatrix> right

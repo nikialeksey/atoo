@@ -4,10 +4,10 @@ import com.nikialeksey.atoo.View;
 
 public class Shape implements View {
 
-    private final PointShader pointShader;
-    private final Points points;
+    private final GlPointShader pointShader;
+    private final GlPoints points;
 
-    public Shape(final PointShader pointShader, final Points points) {
+    public Shape(final GlPointShader pointShader, final GlPoints points) {
         this.pointShader = pointShader;
         this.points = points;
     }

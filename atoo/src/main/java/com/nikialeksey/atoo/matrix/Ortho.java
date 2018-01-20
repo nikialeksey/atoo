@@ -2,16 +2,16 @@ package com.nikialeksey.atoo.matrix;
 
 import com.nikialeksey.atoo.screen.GlScreen;
 
-public class OrthoOperation implements GlMatrixOperation {
+public class Ortho implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
     private final GlScreen screen;
-    private final int far;
+    private final float far;
 
-    public OrthoOperation(
+    public Ortho(
         final GlMatrixFactory factory,
         final GlScreen screen,
-        final int far
+        final float far
     ) {
         this.factory = factory;
         this.screen = screen;

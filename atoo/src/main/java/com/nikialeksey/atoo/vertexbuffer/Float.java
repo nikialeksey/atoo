@@ -2,18 +2,19 @@ package com.nikialeksey.atoo.vertexbuffer;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
-public class FloatBuffer implements GlFloatBuffer {
+public class Float implements GlBuffer<FloatBuffer> {
 
     private final int size;
 
-    public FloatBuffer(final int size) {
+    public Float(final int size) {
         this.size = size;
     }
 
     @Override
-    public java.nio.FloatBuffer asFloatBuffer() {
-        final java.nio.FloatBuffer floatBuffer = ByteBuffer.allocateDirect(size * Float.BYTES)
+    public FloatBuffer asNative() {
+        final FloatBuffer floatBuffer = ByteBuffer.allocateDirect(size * java.lang.Float.BYTES)
             .order(ByteOrder.nativeOrder())
             .asFloatBuffer();
         floatBuffer.position(0);
