@@ -2,7 +2,9 @@ package com.nikialeksey.atoo.sample;
 
 import android.os.Bundle;
 import com.nikialeksey.atoo.Atoo;
+import com.nikialeksey.atoo.background.Solid;
 import com.nikialeksey.atoo.camera.Camera;
+import com.nikialeksey.atoo.color.Color;
 import com.nikialeksey.atoo.geometry.GlPointShader;
 import com.nikialeksey.atoo.geometry.Point;
 import com.nikialeksey.atoo.geometry.PointShader;
@@ -28,7 +30,8 @@ public class Sample extends Atoo {
                         new Point(300, 100),
                         new Point(400, 150),
                         new Point(300, 300)
-                    )
+                    ),
+                    new Solid(new Color(1f, 1f, 0f, 1f))
                 ),
                 new Camera(new MatrixFactory(), pointShader)
             )

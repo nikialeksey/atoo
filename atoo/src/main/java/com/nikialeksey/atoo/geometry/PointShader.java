@@ -3,6 +3,7 @@ package com.nikialeksey.atoo.geometry;
 import android.content.res.AssetManager;
 import android.opengl.GLES20;
 import com.nikialeksey.atoo.matrix.GlMatrix;
+import com.nikialeksey.atoo.shaders.CachedAttribute;
 import com.nikialeksey.atoo.vertexbuffer.GlBuffer;
 import com.nikialeksey.atoo.shaders.GlAttribute;
 import com.nikialeksey.atoo.shaders.CachedShaderProgram;
@@ -23,6 +24,7 @@ public class PointShader implements GlPointShader {
     private final GlShaderProgram shaderProgram;
     private final GlUniform camera;
     private final GlAttribute position;
+    private final GlAttribute color;
 
     public PointShader(final AssetManager assetManager) {
         this(
@@ -39,18 +41,21 @@ public class PointShader implements GlPointShader {
         this(
             shaderProgram,
             new Uniform(shaderProgram, "camera"),
-            new Attribute(shaderProgram, "position")
+            new CachedAttribute(new Attribute(shaderProgram, "position")),
+            new CachedAttribute(new Attribute(shaderProgram, "color"))
         );
     }
 
     private PointShader(
         final GlShaderProgram shaderProgram,
         final GlUniform camera,
-        final GlAttribute position
+        final GlAttribute position,
+        final GlAttribute color
     ) {
         this.shaderProgram = shaderProgram;
         this.camera = camera;
         this.position = position;
+        this.color = color;
     }
 
     @Override
@@ -60,15 +65,27 @@ public class PointShader implements GlPointShader {
 
     @Override
     public void updatePosition(final GlBuffer<FloatBuffer> points, final int strip) {
-        final int link = position.link();
-        GLES20.glEnableVertexAttribArray(link);
+        GLES20.glEnableVertexAttribArray(position.link());
         GLES20.glVertexAttribPointer(
-            link,
+            position.link(),
             3,
             GLES20.GL_FLOAT,
             false,
             strip * Float.BYTES,
             points.asNative()
+        );
+    }
+
+    @Override
+    public void updateColor(final GlBuffer<FloatBuffer> colors, final int strip) {
+        GLES20.glEnableVertexAttribArray(color.link());
+        GLES20.glVertexAttribPointer(
+            color.link(),
+            4,
+            GLES20.GL_FLOAT,
+            false,
+            strip * Float.BYTES,
+            colors.asNative()
         );
     }
 
