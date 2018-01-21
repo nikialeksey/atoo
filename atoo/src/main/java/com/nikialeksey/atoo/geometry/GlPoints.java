@@ -6,6 +6,6 @@ import java.nio.ShortBuffer;
 
 public interface GlPoints {
     int count();
-    GlBuffer<FloatBuffer> points();
+    GlBuffer<FloatBuffer> buffer();
     GlBuffer<ShortBuffer> triangulation();
 }

@@ -51,7 +51,7 @@ public class Points implements GlPoints {
     }
 
     @Override
-    public GlBuffer<FloatBuffer> points() {
+    public GlBuffer<FloatBuffer> buffer() {
         return buffer;
     }
 
