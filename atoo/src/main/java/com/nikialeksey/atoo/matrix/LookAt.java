@@ -2,7 +2,7 @@ package com.nikialeksey.atoo.matrix;
 
 import com.nikialeksey.atoo.geometry.GlPoint;
 
-public class LookAt implements GlMatrixOperation {
+public final class LookAt implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
     private final GlPoint eye;

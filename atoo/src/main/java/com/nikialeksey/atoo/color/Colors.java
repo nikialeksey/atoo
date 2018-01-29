@@ -9,7 +9,7 @@ import java.util.List;
 import org.cactoos.iterable.Repeated;
 import org.cactoos.list.ListOf;
 
-public class Colors implements GlColors {
+public final class Colors implements GlColors {
 
     private final List<GlColor> colors;
     private final GlBuffer<FloatBuffer> buffer;

@@ -3,7 +3,7 @@ package com.nikialeksey.atoo.matrix;
 import org.cactoos.Scalar;
 import org.cactoos.scalar.UncheckedScalar;
 
-public class Multiply implements GlMatrixOperation {
+public final class Multiply implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
     private final UncheckedScalar<? extends GlMatrix> left;

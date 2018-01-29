@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.matrix;
 
-public class Matrix implements GlMatrix {
+public final class Matrix implements GlMatrix {
 
     private static final int SIZE = 16;
 

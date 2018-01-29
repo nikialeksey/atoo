@@ -10,7 +10,7 @@ import java.nio.ShortBuffer;
 import java.util.List;
 import org.cactoos.list.ListOf;
 
-public class Points implements GlPoints {
+public final class Points implements GlPoints {
 
     private final List<GlPoint> glPoints;
     private final GlBuffer<FloatBuffer> buffer;

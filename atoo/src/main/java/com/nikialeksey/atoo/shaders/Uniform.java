@@ -1,8 +1,9 @@
 package com.nikialeksey.atoo.shaders;
 
 import android.opengl.GLES20;
+import java.io.IOException;
 
-public class Uniform implements GlUniform {
+public final class Uniform implements GlUniform {
 
     private final GlShaderProgram shaderProgram;
     private final String name;
@@ -13,7 +14,7 @@ public class Uniform implements GlUniform {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         return GLES20.glGetUniformLocation(shaderProgram.link(), name);
     }
 }

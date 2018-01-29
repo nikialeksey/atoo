@@ -7,7 +7,7 @@ import org.cactoos.Text;
 import org.cactoos.text.TextOf;
 import org.cactoos.text.UncheckedText;
 
-public class AssetText implements Text {
+public final class AssetText implements Text {
 
     private final AssetManager manager;
     private final String assetName;

@@ -1,8 +1,9 @@
 package com.nikialeksey.atoo.shaders;
 
 import android.opengl.GLES20;
+import java.io.IOException;
 
-public class Attribute implements GlAttribute {
+public final class Attribute implements GlAttribute {
 
     private final GlShaderProgram shaderProgram;
     private final String name;
@@ -13,7 +14,7 @@ public class Attribute implements GlAttribute {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         return GLES20.glGetAttribLocation(shaderProgram.link(), name);
     }
 }

@@ -1,8 +1,9 @@
 package com.nikialeksey.atoo.shaders;
 
 import android.content.res.AssetManager;
+import java.io.IOException;
 
-public class FragmentShader implements GlShader {
+public final class FragmentShader implements GlShader {
 
     private final GlHandler origin;
 
@@ -11,7 +12,7 @@ public class FragmentShader implements GlShader {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         return origin.link();
     }
 }

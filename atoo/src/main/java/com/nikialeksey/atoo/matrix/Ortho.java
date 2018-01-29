@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.matrix;
 
-public class Ortho implements GlMatrixOperation {
+public final class Ortho implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
     private final int width;

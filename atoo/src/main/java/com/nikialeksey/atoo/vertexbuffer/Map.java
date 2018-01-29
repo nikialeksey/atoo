@@ -4,7 +4,7 @@ import java.nio.Buffer;
 import org.cactoos.Proc;
 import org.cactoos.func.UncheckedProc;
 
-public class Map<BT extends Buffer> implements GlBuffer<BT> {
+public final class Map<BT extends Buffer> implements GlBuffer<BT> {
 
     private final GlBuffer<BT> origin;
     private final UncheckedProc<BT> mapProc;

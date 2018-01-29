@@ -3,7 +3,7 @@ package com.nikialeksey.atoo.vertexbuffer;
 import java.nio.ShortBuffer;
 import org.cactoos.Scalar;
 
-public class Triangulation implements GlBuffer<ShortBuffer> {
+public final class Triangulation implements GlBuffer<ShortBuffer> {
 
     private static final int MINIMUM = 3;
 

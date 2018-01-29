@@ -4,7 +4,7 @@ import org.cactoos.Scalar;
 import org.cactoos.scalar.StickyScalar;
 import org.cactoos.scalar.UncheckedScalar;
 
-public class Color implements GlColor {
+public final class Color implements GlColor {
 
     private static final int MAX_COLOR_INT = 255;
 

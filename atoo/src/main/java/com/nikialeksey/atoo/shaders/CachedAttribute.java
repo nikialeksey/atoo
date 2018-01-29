@@ -1,6 +1,8 @@
 package com.nikialeksey.atoo.shaders;
 
-public class CachedAttribute implements GlAttribute {
+import java.io.IOException;
+
+public final class CachedAttribute implements GlAttribute {
 
     private final CachedHandler cache;
 
@@ -13,7 +15,7 @@ public class CachedAttribute implements GlAttribute {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         return cache.link();
     }
 }

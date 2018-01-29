@@ -1,6 +1,8 @@
 package com.nikialeksey.atoo.shaders;
 
-public class CachedShaderProgram implements GlShaderProgram {
+import java.io.IOException;
+
+public final class CachedShaderProgram implements GlShaderProgram {
 
     private final GlHandler originGlHandler;
 
@@ -9,7 +11,7 @@ public class CachedShaderProgram implements GlShaderProgram {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         return originGlHandler.link();
     }
 }

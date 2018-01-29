@@ -7,7 +7,7 @@ import com.nikialeksey.atoo.View;
 import com.nikialeksey.atoo.camera.GlCamera;
 
 @SuppressLint("ViewConstructor")
-public class Screen extends GLSurfaceView implements GlScreen {
+public final class Screen extends GLSurfaceView implements GlScreen {
 
     public Screen(final Context context, final View view, final GlCamera camera) {
         this(context, new com.nikialeksey.atoo.screen.Renderer(view, camera));

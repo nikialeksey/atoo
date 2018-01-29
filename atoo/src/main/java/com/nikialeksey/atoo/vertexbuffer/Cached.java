@@ -4,7 +4,7 @@ import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cached<BT extends Buffer> implements GlBuffer<BT> {
+public final class Cached<BT extends Buffer> implements GlBuffer<BT> {
 
     private final List<BT> cache = new ArrayList<>();
     private final GlBuffer<BT> origin;

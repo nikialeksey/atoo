@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-public class Float implements GlBuffer<FloatBuffer> {
+public final class Float implements GlBuffer<FloatBuffer> {
 
     private final int size;
 

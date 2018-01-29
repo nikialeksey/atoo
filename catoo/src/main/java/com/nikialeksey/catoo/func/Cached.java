@@ -3,7 +3,7 @@ package com.nikialeksey.catoo.func;
 import android.util.SparseArray;
 import org.cactoos.Func;
 
-public class Cached<T> implements Func<Integer, T> {
+public final class Cached<T> implements Func<Integer, T> {
 
     private final SparseArray<T> cache;
     private final Func<Integer, T> origin;

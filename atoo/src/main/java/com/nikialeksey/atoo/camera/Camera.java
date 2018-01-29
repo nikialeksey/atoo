@@ -1,5 +1,6 @@
 package com.nikialeksey.atoo.camera;
 
+import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.geometry.GlPointShader;
 import com.nikialeksey.atoo.geometry.Point;
 import com.nikialeksey.atoo.matrix.GlMatrix;
@@ -11,7 +12,7 @@ import com.nikialeksey.atoo.matrix.Ortho;
 import org.cactoos.BiFunc;
 import org.cactoos.func.UncheckedBiFunc;
 
-public class Camera implements GlCamera {
+public final class Camera implements GlCamera {
 
     private final GlPointShader pointShader;
     private final UncheckedBiFunc<Integer, Integer, GlMatrix> projectionView;
@@ -54,7 +55,7 @@ public class Camera implements GlCamera {
     }
 
     @Override
-    public void update(final int screenWidth, final int screenHeight) {
+    public void update(final int screenWidth, final int screenHeight) throws GlException {
         pointShader.updateCamera(projectionView.apply(screenWidth, screenHeight));
     }
 }

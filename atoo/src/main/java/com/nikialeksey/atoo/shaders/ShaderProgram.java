@@ -1,9 +1,10 @@
 package com.nikialeksey.atoo.shaders;
 
 import android.opengl.GLES20;
+import java.io.IOException;
 import org.cactoos.iterable.IterableOf;
 
-public class ShaderProgram implements GlShaderProgram {
+public final class ShaderProgram implements GlShaderProgram {
 
     private final Iterable<GlShader> shaders;
 
@@ -12,7 +13,7 @@ public class ShaderProgram implements GlShaderProgram {
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         final int link = GLES20.glCreateProgram();
 
         for (final GlShader shader : shaders) {

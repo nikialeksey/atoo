@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.geometry;
 
-public class Point implements GlPoint {
+public final class Point implements GlPoint {
 
     private final float x;
     private final float y;

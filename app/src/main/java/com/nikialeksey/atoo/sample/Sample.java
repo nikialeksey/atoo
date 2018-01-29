@@ -13,7 +13,7 @@ import com.nikialeksey.atoo.geometry.Shape;
 import com.nikialeksey.atoo.matrix.MatrixFactory;
 import com.nikialeksey.atoo.screen.Screen;
 
-public class Sample extends Atoo {
+public final class Sample extends Atoo {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

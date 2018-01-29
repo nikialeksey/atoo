@@ -7,7 +7,7 @@ import java.nio.ShortBuffer;
 import org.cactoos.Scalar;
 import org.cactoos.scalar.UncheckedScalar;
 
-public class Short implements GlBuffer<ShortBuffer> {
+public final class Short implements GlBuffer<ShortBuffer> {
 
     private final UncheckedScalar<Integer> size;
 

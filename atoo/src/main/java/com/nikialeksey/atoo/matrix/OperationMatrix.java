@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.matrix;
 
-public class OperationMatrix implements GlMatrix {
+public final class OperationMatrix implements GlMatrix {
 
     private final GlMatrixOperation operation;
 

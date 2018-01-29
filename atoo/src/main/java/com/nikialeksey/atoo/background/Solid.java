@@ -8,7 +8,7 @@ import com.nikialeksey.catoo.func.Cached;
 import org.cactoos.Func;
 import org.cactoos.func.UncheckedFunc;
 
-public class Solid implements GlBackground {
+public final class Solid implements GlBackground {
 
     private final UncheckedFunc<Integer, GlColors> toColors;
 

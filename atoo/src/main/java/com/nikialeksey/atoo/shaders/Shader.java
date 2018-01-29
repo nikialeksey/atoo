@@ -3,12 +3,13 @@ package com.nikialeksey.atoo.shaders;
 import android.content.res.AssetManager;
 import android.opengl.GLES20;
 import com.nikialeksey.catoo.assets.AssetText;
+import java.io.IOException;
 import org.cactoos.Text;
 import org.cactoos.text.UncheckedText;
 
-public class Shader implements GlShader {
+public final class Shader implements GlShader {
 
-    private final UncheckedText source;
+    private final Text source;
     private final GlShaderType type;
 
     public Shader(final GlShaderType type, final AssetManager manager, final String assetName) {
@@ -20,11 +21,11 @@ public class Shader implements GlShader {
 
     public Shader(final GlShaderType type, final Text source) {
         this.type = type;
-        this.source = new UncheckedText(source);
+        this.source = source;
     }
 
     @Override
-    public int link() {
+    public int link() throws IOException {
         final int link = GLES20.glCreateShader(type.value());
         GLES20.glShaderSource(link, source.asString());
         GLES20.glCompileShader(link);
