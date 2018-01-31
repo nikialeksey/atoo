@@ -2,7 +2,6 @@ package com.nikialeksey.atoo.vertexbuffer;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 import org.cactoos.Scalar;
 import org.cactoos.scalar.UncheckedScalar;

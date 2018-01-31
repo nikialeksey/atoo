@@ -14,7 +14,7 @@ public final class Cached<BT extends Buffer> implements GlBuffer<BT> {
     }
 
     @Override
-    public BT asNative() {
+    public BT asNative() throws Exception {
         if (cache.isEmpty()) {
             cache.add(origin.asNative());
         }

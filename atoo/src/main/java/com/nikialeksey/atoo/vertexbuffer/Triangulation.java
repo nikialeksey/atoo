@@ -36,7 +36,7 @@ public final class Triangulation implements GlBuffer<ShortBuffer> {
     }
 
     @Override
-    public ShortBuffer asNative() {
+    public ShortBuffer asNative() throws Exception {
         return buffer.asNative();
     }
 

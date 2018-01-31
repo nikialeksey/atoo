@@ -2,24 +2,20 @@ package com.nikialeksey.atoo.geometry;
 
 import android.content.res.AssetManager;
 import android.opengl.GLES20;
+import com.nikialeksey.atoo.color.GlColors;
 import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.matrix.GlMatrix;
+import com.nikialeksey.atoo.shaders.Attribute;
 import com.nikialeksey.atoo.shaders.CachedAttribute;
-import com.nikialeksey.atoo.vertexbuffer.GlBuffer;
-import com.nikialeksey.atoo.shaders.GlAttribute;
 import com.nikialeksey.atoo.shaders.CachedShaderProgram;
 import com.nikialeksey.atoo.shaders.FragmentShader;
-import com.nikialeksey.atoo.shaders.Attribute;
-import com.nikialeksey.atoo.shaders.ShaderProgram;
-import com.nikialeksey.atoo.shaders.Uniform;
+import com.nikialeksey.atoo.shaders.GlAttribute;
 import com.nikialeksey.atoo.shaders.GlShaderProgram;
 import com.nikialeksey.atoo.shaders.GlUniform;
+import com.nikialeksey.atoo.shaders.ShaderProgram;
+import com.nikialeksey.atoo.shaders.Uniform;
 import com.nikialeksey.atoo.shaders.VertexShader;
-import com.nikialeksey.atoo.vertexbuffer.Triangulation;
 import java.io.IOException;
-import java.nio.FloatBuffer;
-import java.nio.ShortBuffer;
-import org.cactoos.scalar.UncheckedScalar;
 
 public final class PointShader implements GlPointShader {
 
@@ -66,40 +62,20 @@ public final class PointShader implements GlPointShader {
     }
 
     @Override
-    public void updatePosition(
-        final GlBuffer<FloatBuffer> points,
-        final int strip
-    ) throws GlException {
+    public void updatePosition(final GlPoints points) throws GlException {
         try {
             GLES20.glEnableVertexAttribArray(position.link());
-            GLES20.glVertexAttribPointer(
-                position.link(),
-                3,
-                GLES20.GL_FLOAT,
-                false,
-                strip * Float.BYTES,
-                points.asNative()
-            );
+            points.updateAttribute(position.link());
         } catch (IOException e) {
             throw new GlException("Can't update position in vertex attribute array", e);
         }
     }
 
     @Override
-    public void updateColor(
-        final GlBuffer<FloatBuffer> colors,
-        final int strip
-    ) throws GlException {
+    public void updateColor(final GlColors colors) throws GlException {
         try {
             GLES20.glEnableVertexAttribArray(color.link());
-            GLES20.glVertexAttribPointer(
-                color.link(),
-                4,
-                GLES20.GL_FLOAT,
-                false,
-                strip * Float.BYTES,
-                colors.asNative()
-            );
+            colors.updateAttribute(color.link());
         } catch (IOException e) {
             throw new GlException("Can't update color in vertex attribute array", e);
         }

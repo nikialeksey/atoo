@@ -2,16 +2,15 @@ package com.nikialeksey.atoo.color;
 
 import org.cactoos.Scalar;
 import org.cactoos.scalar.StickyScalar;
-import org.cactoos.scalar.UncheckedScalar;
 
 public final class Color implements GlColor {
 
     private static final int MAX_COLOR_INT = 255;
 
-    private final UncheckedScalar<Float> r;
-    private final UncheckedScalar<Float> g;
-    private final UncheckedScalar<Float> b;
-    private final UncheckedScalar<Float> a;
+    private final Scalar<Float> r;
+    private final Scalar<Float> g;
+    private final Scalar<Float> b;
+    private final Scalar<Float> a;
 
     public Color(final float r, final float g, final float b, final float a) {
         this(
@@ -37,20 +36,6 @@ public final class Color implements GlColor {
         final Scalar<Float> b,
         final Scalar<Float> a
     ) {
-        this(
-            new UncheckedScalar<>(r),
-            new UncheckedScalar<>(g),
-            new UncheckedScalar<>(b),
-            new UncheckedScalar<>(a)
-        );
-    }
-
-    public Color(
-        final UncheckedScalar<Float> r,
-        final UncheckedScalar<Float> g,
-        final UncheckedScalar<Float> b,
-        final UncheckedScalar<Float> a
-    ) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -58,22 +43,22 @@ public final class Color implements GlColor {
     }
 
     @Override
-    public float r() {
+    public float r() throws Exception {
         return r.value();
     }
 
     @Override
-    public float g() {
+    public float g() throws Exception {
         return g.value();
     }
 
     @Override
-    public float b() {
+    public float b() throws Exception {
         return b.value();
     }
 
     @Override
-    public float a() {
+    public float a() throws Exception {
         return a.value();
     }
 }

@@ -1,5 +1,7 @@
 package com.nikialeksey.atoo.geometry;
 
+import android.opengl.GLES20;
+import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.vertexbuffer.Cached;
 import com.nikialeksey.atoo.vertexbuffer.Float;
 import com.nikialeksey.atoo.vertexbuffer.GlBuffer;
@@ -12,6 +14,9 @@ import org.cactoos.list.ListOf;
 
 public final class Points implements GlPoints {
 
+    private static final int FLOAT_PER_POINT = 3;
+    private static final int POINT_STRIP = 3 * java.lang.Float.BYTES;
+
     private final List<GlPoint> glPoints;
     private final GlBuffer<FloatBuffer> buffer;
     private final GlBuffer<ShortBuffer> triangulation;
@@ -20,7 +25,7 @@ public final class Points implements GlPoints {
         this(
             new ListOf<>(glPoints),
             new Map<>(
-                new Cached<>(new Float(glPoints.length * 3)),
+                new Cached<>(new Float(glPoints.length * FLOAT_PER_POINT)),
                 buffer -> {
                     buffer.position(0);
                     for (final GlPoint glPoint : glPoints) {
@@ -51,8 +56,19 @@ public final class Points implements GlPoints {
     }
 
     @Override
-    public GlBuffer<FloatBuffer> buffer() {
-        return buffer;
+    public void updateAttribute(final int link) throws GlException {
+        try {
+            GLES20.glVertexAttribPointer(
+                link,
+                FLOAT_PER_POINT,
+                GLES20.GL_FLOAT,
+                false,
+                POINT_STRIP,
+                buffer.asNative()
+            );
+        } catch (Exception e) {
+            throw new GlException("Can't update points attribute data", e);
+        }
     }
 
     @Override

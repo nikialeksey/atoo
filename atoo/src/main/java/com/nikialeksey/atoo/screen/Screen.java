@@ -10,7 +10,13 @@ import com.nikialeksey.atoo.camera.GlCamera;
 public final class Screen extends GLSurfaceView implements GlScreen {
 
     public Screen(final Context context, final View view, final GlCamera camera) {
-        this(context, new com.nikialeksey.atoo.screen.Renderer(view, camera));
+        this(
+            context,
+            new com.nikialeksey.atoo.screen.Renderer(
+                new FpsView(view),
+                camera
+            )
+        );
     }
 
     public Screen(final Context context, final GlRenderer renderer) {
