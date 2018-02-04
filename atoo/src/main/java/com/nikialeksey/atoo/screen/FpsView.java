@@ -7,15 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 public final class FpsView implements View {
 
-    private static final int DEFAULT_FPS = 30;
-
     private final View origin;
     private final int fps;
 
     private long last = 0;
 
     public FpsView(final View origin) {
-        this(origin, DEFAULT_FPS);
+        this(origin, 30);
     }
 
     public FpsView(final View origin, final int fps) {

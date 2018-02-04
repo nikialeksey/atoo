@@ -1,10 +1,10 @@
 package com.nikialeksey.atoo.shaders;
 
-import android.opengl.GLES20;
+import android.opengl.GLES31;
 
 public final class VertexType implements GlShaderType {
     @Override
     public int value() {
-        return GLES20.GL_VERTEX_SHADER;
+        return GLES31.GL_VERTEX_SHADER;
     }
 }

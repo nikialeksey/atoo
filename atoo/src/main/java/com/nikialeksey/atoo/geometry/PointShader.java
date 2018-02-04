@@ -1,7 +1,7 @@
 package com.nikialeksey.atoo.geometry;
 
 import android.content.res.AssetManager;
-import android.opengl.GLES20;
+import android.opengl.GLES31;
 import com.nikialeksey.atoo.color.GlColors;
 import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.matrix.GlMatrix;
@@ -64,7 +64,7 @@ public final class PointShader implements GlPointShader {
     @Override
     public void updatePosition(final GlPoints points) throws GlException {
         try {
-            GLES20.glEnableVertexAttribArray(position.link());
+            GLES31.glEnableVertexAttribArray(position.link());
             points.updateAttribute(position.link());
         } catch (IOException e) {
             throw new GlException("Can't update position in vertex attribute array", e);
@@ -74,7 +74,7 @@ public final class PointShader implements GlPointShader {
     @Override
     public void updateColor(final GlColors colors) throws GlException {
         try {
-            GLES20.glEnableVertexAttribArray(color.link());
+            GLES31.glEnableVertexAttribArray(color.link());
             colors.updateAttribute(color.link());
         } catch (IOException e) {
             throw new GlException("Can't update color in vertex attribute array", e);
@@ -84,7 +84,7 @@ public final class PointShader implements GlPointShader {
     @Override
     public void updateCamera(final GlMatrix camera) throws GlException {
         try {
-            GLES20.glUniformMatrix4fv(this.camera.link(), 1, false, camera.asFloatArray(), 0);
+            GLES31.glUniformMatrix4fv(this.camera.link(), 1, false, camera.asFloatArray(), 0);
         } catch (IOException e) {
             throw new GlException("Can't update camera in uniform", e);
         }

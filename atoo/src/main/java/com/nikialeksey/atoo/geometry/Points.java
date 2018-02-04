@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.geometry;
 
-import android.opengl.GLES20;
+import android.opengl.GLES31;
 import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.vertexbuffer.Cached;
 import com.nikialeksey.atoo.vertexbuffer.Float;
@@ -58,10 +58,10 @@ public final class Points implements GlPoints {
     @Override
     public void updateAttribute(final int link) throws GlException {
         try {
-            GLES20.glVertexAttribPointer(
+            GLES31.glVertexAttribPointer(
                 link,
                 FLOAT_PER_POINT,
-                GLES20.GL_FLOAT,
+                GLES31.GL_FLOAT,
                 false,
                 POINT_STRIP,
                 buffer.asNative()

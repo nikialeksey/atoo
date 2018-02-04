@@ -1,6 +1,6 @@
 package com.nikialeksey.atoo.screen;
 
-import android.opengl.GLES20;
+import android.opengl.GLES31;
 import android.util.Log;
 import com.nikialeksey.atoo.View;
 import com.nikialeksey.atoo.camera.GlCamera;
@@ -22,12 +22,12 @@ public final class Renderer implements GlRenderer {
 
     @Override
     public void onSurfaceCreated(final GL10 gl, final EGLConfig config) {
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        GLES31.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
     @Override
     public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
-        GLES20.glViewport(0, 0, width, height);
+        GLES31.glViewport(0, 0, width, height);
         try {
             camera.update(width, height);
         } catch (GlException e) {
@@ -38,7 +38,7 @@ public final class Renderer implements GlRenderer {
 
     @Override
     public void onDrawFrame(final GL10 gl) {
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+        GLES31.glClear(GLES31.GL_COLOR_BUFFER_BIT | GLES31.GL_DEPTH_BUFFER_BIT);
         try {
             view.draw();
         } catch (GlException e) {

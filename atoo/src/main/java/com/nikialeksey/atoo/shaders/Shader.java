@@ -1,11 +1,10 @@
 package com.nikialeksey.atoo.shaders;
 
 import android.content.res.AssetManager;
-import android.opengl.GLES20;
+import android.opengl.GLES31;
 import com.nikialeksey.catoo.assets.AssetText;
 import java.io.IOException;
 import org.cactoos.Text;
-import org.cactoos.text.UncheckedText;
 
 public final class Shader implements GlShader {
 
@@ -26,9 +25,9 @@ public final class Shader implements GlShader {
 
     @Override
     public int link() throws IOException {
-        final int link = GLES20.glCreateShader(type.value());
-        GLES20.glShaderSource(link, source.asString());
-        GLES20.glCompileShader(link);
+        final int link = GLES31.glCreateShader(type.value());
+        GLES31.glShaderSource(link, source.asString());
+        GLES31.glCompileShader(link);
         return link;
     }
 }

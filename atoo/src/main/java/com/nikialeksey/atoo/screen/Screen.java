@@ -21,7 +21,7 @@ public final class Screen extends GLSurfaceView implements GlScreen {
 
     public Screen(final Context context, final GlRenderer renderer) {
         super(context);
-        setEGLContextClientVersion(2); // OpenGl ES 2.0
+        setEGLContextClientVersion(3);
         setRenderer(renderer);
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
