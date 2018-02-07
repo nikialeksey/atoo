@@ -1,5 +1,6 @@
 package com.nikialeksey.atoo.matrix;
 
+import com.nikialeksey.atoo.exception.GlException;
 import com.nikialeksey.atoo.geometry.GlPoint;
 
 public final class LookAt implements GlMatrixOperation {
@@ -22,15 +23,19 @@ public final class LookAt implements GlMatrixOperation {
     }
 
     @Override
-    public GlMatrix result() {
+    public GlMatrix result() throws GlException {
         final GlMatrix matrix = factory.matrix();
         final float[] matrixData = matrix.asFloatArray();
-        android.opengl.Matrix.setLookAtM(
-            matrixData, 0,
-            eye.x(), eye.y(), eye.z(),
-            center.x(), center.y(), center.z(),
-            up.x(), up.y(), up.z()
-        );
+        try {
+            android.opengl.Matrix.setLookAtM(
+                matrixData, 0,
+                eye.x(), eye.y(), eye.z(),
+                center.x(), center.y(), center.z(),
+                up.x(), up.y(), up.z()
+            );
+        } catch (Exception e) {
+            throw new GlException("Can't look at me", e);
+        }
         matrix.update(matrixData);
         return matrix;
     }

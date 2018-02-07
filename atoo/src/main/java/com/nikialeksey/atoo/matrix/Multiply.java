@@ -1,5 +1,6 @@
 package com.nikialeksey.atoo.matrix;
 
+import com.nikialeksey.atoo.exception.GlException;
 import org.cactoos.Scalar;
 import org.cactoos.scalar.UncheckedScalar;
 
@@ -45,7 +46,7 @@ public final class Multiply implements GlMatrixOperation {
     }
 
     @Override
-    public GlMatrix result() {
+    public GlMatrix result() throws GlException {
         final GlMatrix result = factory.matrix();
         final float[] resultData = result.asFloatArray();
         final float[] lhs = left.value().asFloatArray();

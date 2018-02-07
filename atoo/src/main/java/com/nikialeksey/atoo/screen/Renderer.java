@@ -38,7 +38,6 @@ public final class Renderer implements GlRenderer {
 
     @Override
     public void onDrawFrame(final GL10 gl) {
-        GLES31.glClear(GLES31.GL_COLOR_BUFFER_BIT | GLES31.GL_DEPTH_BUFFER_BIT);
         try {
             view.draw();
         } catch (GlException e) {

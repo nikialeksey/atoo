@@ -1,5 +1,7 @@
 package com.nikialeksey.atoo.matrix;
 
+import com.nikialeksey.atoo.exception.GlException;
+
 public final class Ortho implements GlMatrixOperation {
 
     private final GlMatrixFactory factory;
@@ -17,7 +19,7 @@ public final class Ortho implements GlMatrixOperation {
     }
 
     @Override
-    public GlMatrix result() {
+    public GlMatrix result() throws GlException {
         final GlMatrix result = factory.matrix();
         final float[] resultData = result.asFloatArray();
         android.opengl.Matrix.orthoM(resultData, 0, 0f, width, 0.0f, height, 0, 1);

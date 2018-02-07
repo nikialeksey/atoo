@@ -10,12 +10,11 @@ import com.nikialeksey.atoo.matrix.Multiply;
 import com.nikialeksey.atoo.matrix.OperationMatrix;
 import com.nikialeksey.atoo.matrix.Ortho;
 import org.cactoos.BiFunc;
-import org.cactoos.func.UncheckedBiFunc;
 
 public final class Camera implements GlCamera {
 
     private final GlPointShader pointShader;
-    private final UncheckedBiFunc<Integer, Integer, GlMatrix> projectionView;
+    private final BiFunc<Integer, Integer, GlMatrix> projectionView;
 
     public Camera(final GlMatrixFactory matrixFactory, final GlPointShader pointShader) {
         this(
@@ -43,19 +42,16 @@ public final class Camera implements GlCamera {
         final GlPointShader pointShader,
         final BiFunc<Integer, Integer, GlMatrix> projectionView
     ) {
-        this(pointShader, new UncheckedBiFunc<>(projectionView));
-    }
-
-    public Camera(
-        final GlPointShader pointShader,
-        final UncheckedBiFunc<Integer, Integer, GlMatrix> projectionView
-    ) {
         this.pointShader = pointShader;
         this.projectionView = projectionView;
     }
 
     @Override
     public void update(final int screenWidth, final int screenHeight) throws GlException {
-        pointShader.updateCamera(projectionView.apply(screenWidth, screenHeight));
+        try {
+            pointShader.updateCamera(projectionView.apply(screenWidth, screenHeight));
+        } catch (Exception e) {
+            throw new GlException("Can't update camera in shader", e);
+        }
     }
 }

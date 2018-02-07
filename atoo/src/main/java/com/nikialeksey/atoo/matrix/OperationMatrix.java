@@ -1,5 +1,7 @@
 package com.nikialeksey.atoo.matrix;
 
+import com.nikialeksey.atoo.exception.GlException;
+
 public final class OperationMatrix implements GlMatrix {
 
     private final GlMatrixOperation operation;
@@ -9,7 +11,7 @@ public final class OperationMatrix implements GlMatrix {
     }
 
     @Override
-    public float[] asFloatArray() {
+    public float[] asFloatArray() throws GlException {
         return operation.result().asFloatArray();
     }
 

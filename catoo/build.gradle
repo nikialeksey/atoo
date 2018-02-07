@@ -8,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 27
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,6 +21,6 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    api 'org.cactoos:cactoos:0.28.2'
+    api 'org.cactoos:cactoos:0.29'
+    api group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }

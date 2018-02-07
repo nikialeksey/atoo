@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import org.cactoos.Text;
 import org.cactoos.text.TextOf;
-import org.cactoos.text.UncheckedText;
 
 public final class AssetText implements Text {
 
@@ -20,10 +19,5 @@ public final class AssetText implements Text {
     @Override
     public String asString() throws IOException {
         return new TextOf(new InputStreamReader(manager.open(assetName))).asString();
-    }
-
-    @Override
-    public int compareTo(final Text text) {
-        return new UncheckedText(this).compareTo(text);
     }
 }
